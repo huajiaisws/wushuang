@@ -1,0 +1,28 @@
+使用shell脚本的方式执行定时任务：
+
+注意：“/htdocs/gzlz_fa/handle.php” 要换成项目对应的绝对路径
+
+处理抢购数据的接口，每隔一分钟执行一次：
+php /htdocs/gzlz_fa/handle.php
+
+处理完抢购数据之后，发送短信 需要定时任务 十分钟执行一次：
+php /htdocs/gzlz_fa/sendsms.php
+
+每期抢购的信息日志记录，做定时任务，每天凌晨前执行 23:40:00 ：
+php /htdocs/gzlz_fa/mininglogs.php
+
+结算收益的接口，中午9点结算订单收益,9:00:00
+php /htdocs/gzlz_fa/getprofit.php
+
+检测到期接口，必须在结算收益接口执行之后，才能执行,9:15:00
+php /htdocs/gzlz_fa/checkore.php
+
+
+订单是否超过了付款时间，如果超过了，买家订单报废，卖家订单延期一天，每15分钟执行一次：
+php /htdocs/gzlz_fa/checkpaytime.php
+
+买家已付款，但是卖家2小时内都没有点击确认，自动确认 需要定时任务，每9分钟执行一次
+php /htdocs/gzlz_fa/checkfinish.php
+
+晚上23:00分统一处理预约回退
+php /htdocs/gzlz_fa/booking.php
